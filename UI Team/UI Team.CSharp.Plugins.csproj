@@ -73,6 +73,9 @@
     <Reference Include="libpxcclr.unity">
       <HintPath>Assets\Plugins.Managed\libpxcclr.unity.dll</HintPath>
     </Reference>
+    <Reference Include="LeapCSharp.NET3.5">
+      <HintPath>Assets\Plugins\LeapCSharp.NET3.5.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\CameraIntrinsics.cs" />
@@ -162,7 +165,17 @@
     <Compile Include="Assets\Standard Assets\Windows\Kinect\Vector4.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\LeapMotion\Dependencies.txt" />
+    <None Include="Assets\LeapMotion\README_BEFORE_UPDATING.txt" />
+    <None Include="Assets\LeapMotion\Resources\LeapCG.cginc" />
+    <None Include="Assets\LeapMotion\Resources\PassthroughBackground.shader" />
+    <None Include="Assets\LeapMotion\Resources\PassthroughForeground.shader" />
+    <None Include="Assets\LeapMotion\Resources\RuntimeGizmos.shader" />
+    <None Include="Assets\LeapMotion\Resources\ThresholdOverlay.shader" />
+    <None Include="Assets\LeapMotion\Version.txt" />
+    <None Include="Assets\LeapMotion\readme.txt" />
     <None Include="Assets\Plugins.Managed\libpxcclr.unity.XML" />
+    <None Include="Assets\Plugins\donotdelete.txt" />
     <None Include="Assets\RSUnityToolkit\Internals\Materials\Occlusion.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

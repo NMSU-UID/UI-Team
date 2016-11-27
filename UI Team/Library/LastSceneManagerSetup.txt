@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Sence/Kinect-Task3.unity
+- path: Assets/Sence/LM-Task1.unity
   isLoaded: 1
   isActive: 1
