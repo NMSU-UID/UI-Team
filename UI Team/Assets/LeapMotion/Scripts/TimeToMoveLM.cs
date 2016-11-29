@@ -14,7 +14,7 @@ public class TimeToMoveLM : MonoBehaviour {
     void  OnTriggerEnter2D(Collider2D otherCollider)
     {
         TrackingIndex ta = otherCollider.gameObject.GetComponent<TrackingIndex>();
-        if (ta != null && handGes.GetComponent<GUIText>().text == "thumb_up")
+        if (ta != null && handGes.GetComponent<GUIText>().text == "open_hand")
         {
             MoveTheObj = true;
         }
