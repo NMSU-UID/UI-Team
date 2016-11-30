@@ -3,12 +3,14 @@ using System.Collections;
 
 public class StopObject : MonoBehaviour {
 
+    GameObject cursor;
     GameObject handGes;
     bool objectDroppedOutside = false;
 
     // Use this for initialization
     void Start ()
     {
+        cursor = GameObject.Find("Cursor");
         handGes = GameObject.Find("myTextLeft");
     }
 	
@@ -29,8 +31,8 @@ public class StopObject : MonoBehaviour {
         {
             TimeToMove.MoveTheObj = false;
             SimpleTimer.timeCon = false;
-        }
-	
+            cursor.GetComponent<FinishRSTask>().enabled = true;
+        }	
 	}
 
     void addWrongDrop(bool a)

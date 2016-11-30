@@ -54,30 +54,5 @@ public class DetectJoints : MonoBehaviour {
             }
         }
 	}
-    /*
-
-    private int CheckRightHandState(HandState handState2)
-    {
-        int result = 0;
-        switch (handState2)
-        {
-            //Normal
-            case HandState.Closed:
-                result = 0;
-                break;
-            //Stop
-            case HandState.Open:
-                result = 0;
-                break;
-            //Flip
-            case HandState.Lasso:
-                result = 1;
-                break;
-            default:
-                result = 0;
-                break;
-        }
-        return result;
-    }*/
 }
 

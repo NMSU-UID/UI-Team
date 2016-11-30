@@ -35,7 +35,7 @@ public class StopTriLM : MonoBehaviour
             MoveRectLM.movingFlag = true;
             TimeToMoveTriLM.MoveTheObj = false;
             checkMarkTri.GetComponent<SpriteRenderer>().enabled = true;
-            Task3Timer.theTri = true;
+            Task3TimerLM.theTri = true;
         }
 
     }

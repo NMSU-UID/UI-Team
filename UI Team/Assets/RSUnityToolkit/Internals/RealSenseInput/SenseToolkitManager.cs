@@ -162,18 +162,18 @@ namespace RSUnityToolkit
             Initialized = false;
 
             /* Create a SenseManager instance */
-			SenseManager = PXCMSenseManager.CreateInstance();
-			
+            SenseManager = PXCMSenseManager.CreateInstance();
+
             if (SenseManager == null)
             {
                 print("Unable to create the pipeline instance");
                 return;
             }
-			
-			if (_speechCommandsRef.Count != 0)
-			{
-				SetSenseOption(SenseOption.SenseOptionID.Speech);
-			}
+
+            if (_speechCommandsRef.Count != 0)
+            {
+                SetSenseOption(SenseOption.SenseOptionID.Speech);
+            }
 
             int numberOfEnabledModalities = 0;
 
@@ -214,23 +214,23 @@ namespace RSUnityToolkit
                     cManager.SetFileName(FilePath, true);
                     Debug.Log("SenseToolkitManager: Recording to file: " + FilePath);
                 }
-            }					
-			
+            }
+
             /* Enable modalities according to the set options*/
             if (IsSenseOptionSet(SenseOption.SenseOptionID.Face, true))
-            {				            	
-				SenseManager.EnableFace();                     			
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Face).Initialized = true;
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Face).Enabled = true;
-				SetSenseOption(SenseOption.SenseOptionID.VideoColorStream);
+            {
+                SenseManager.EnableFace();
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Face).Initialized = true;
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Face).Enabled = true;
+                SetSenseOption(SenseOption.SenseOptionID.VideoColorStream);
                 numberOfEnabledModalities++;
             }
-						
+
             if (IsSenseOptionSet(SenseOption.SenseOptionID.Hand, true))
             {
                 _sts = SenseManager.EnableHand();
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Hand).Initialized = true;
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Hand).Enabled = true;
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Hand).Initialized = true;
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Hand).Enabled = true;
                 numberOfEnabledModalities++;
             }
 
@@ -241,104 +241,104 @@ namespace RSUnityToolkit
                 _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Blob).Enabled = true;
                 numberOfEnabledModalities++;
             }
-			
-			if (IsSenseOptionSet(SenseOption.SenseOptionID.Object, true))
+
+            if (IsSenseOptionSet(SenseOption.SenseOptionID.Object, true))
             {
-				_sts = SenseManager.EnableTracker();
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Object).Initialized = true;		
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Object).Enabled = true;				
-				numberOfEnabledModalities++;				
-            }
-			
-			if (IsSenseOptionSet(SenseOption.SenseOptionID.Speech, true))
-            {
-				if (!SpeechManager.IsInitialized)
-				{
-					if (SpeechManager.InitalizeSpeech())
-					{				
-						_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Speech).Initialized = true;	
-						_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Speech).Enabled = true;
-						numberOfEnabledModalities++;				
-					}
-					else
-					{
-						UnsetSenseOption(SenseOption.SenseOptionID.Speech);
-					}
-				}
-				else
-				{
-					_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Speech).Initialized = true;	
-					_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.Speech).Enabled = true;
-					numberOfEnabledModalities++;		
-				}	
-            }
-			
-            if (IsSenseOptionSet(SenseOption.SenseOptionID.VideoDepthStream, true) ||
-				IsSenseOptionSet(SenseOption.SenseOptionID.PointCloud, true))
-            {
-                SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_DEPTH, 0, 0, 0);
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.VideoDepthStream).Initialized = true;
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.VideoDepthStream).Enabled = true;
+                _sts = SenseManager.EnableTracker();
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Object).Initialized = true;
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Object).Enabled = true;
                 numberOfEnabledModalities++;
             }
-			
-			if (IsSenseOptionSet(SenseOption.SenseOptionID.VideoIRStream, true))
-            {                
-				SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_IR, 0, 0, 0);
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.VideoIRStream).Initialized = true;
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.VideoIRStream).Enabled = true;
+
+            if (IsSenseOptionSet(SenseOption.SenseOptionID.Speech, true))
+            {
+                if (!SpeechManager.IsInitialized)
+                {
+                    if (SpeechManager.InitalizeSpeech())
+                    {
+                        _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Speech).Initialized = true;
+                        _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Speech).Enabled = true;
+                        numberOfEnabledModalities++;
+                    }
+                    else
+                    {
+                        UnsetSenseOption(SenseOption.SenseOptionID.Speech);
+                    }
+                }
+                else
+                {
+                    _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Speech).Initialized = true;
+                    _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.Speech).Enabled = true;
+                    numberOfEnabledModalities++;
+                }
+            }
+
+            if (IsSenseOptionSet(SenseOption.SenseOptionID.VideoDepthStream, true) ||
+                IsSenseOptionSet(SenseOption.SenseOptionID.PointCloud, true))
+            {
+                SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_DEPTH, 0, 0, 0);
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.VideoDepthStream).Initialized = true;
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.VideoDepthStream).Enabled = true;
+                numberOfEnabledModalities++;
+            }
+
+            if (IsSenseOptionSet(SenseOption.SenseOptionID.VideoIRStream, true))
+            {
+                SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_IR, 0, 0, 0);
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.VideoIRStream).Initialized = true;
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.VideoIRStream).Enabled = true;
                 numberOfEnabledModalities++;
             }
 
             if (IsSenseOptionSet(SenseOption.SenseOptionID.VideoColorStream, true))
             {
-				if (ColorImageQuality == MCTTypes.RGBQuality.FullHD)
-				{
-					SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 1920, 1080, 0);			
-				}
-				else if (ColorImageQuality == MCTTypes.RGBQuality.HD)
-				{
-					SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 1280, 720, 0);			
-				}
-				else if (ColorImageQuality == MCTTypes.RGBQuality.HalfHD)
-				{
-					SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 960, 540, 0);			
-				}
-				else 
-				{
-					SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 640, 480, 0);			
-				}
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.VideoColorStream).Initialized = true;
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.VideoColorStream).Enabled = true;
+                if (ColorImageQuality == MCTTypes.RGBQuality.FullHD)
+                {
+                    SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 1920, 1080, 0);
+                }
+                else if (ColorImageQuality == MCTTypes.RGBQuality.HD)
+                {
+                    SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 1280, 720, 0);
+                }
+                else if (ColorImageQuality == MCTTypes.RGBQuality.HalfHD)
+                {
+                    SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 960, 540, 0);
+                }
+                else
+                {
+                    SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 640, 480, 0);
+                }
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.VideoColorStream).Initialized = true;
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.VideoColorStream).Enabled = true;
                 numberOfEnabledModalities++;
-            } 
-			
-			if (IsSenseOptionSet(SenseOption.SenseOptionID.VideoSegmentation, true))
-            {			
-				if (ColorImageQuality == MCTTypes.RGBQuality.FullHD)
-				{
-					SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 1920, 1080, 0);			
-				}
-				else if (ColorImageQuality == MCTTypes.RGBQuality.HD)
-				{
-					SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 1280, 720, 0);			
-				}
-				else if (ColorImageQuality == MCTTypes.RGBQuality.HalfHD)
-				{
-					SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 960, 540, 0);			
-				}
-				else 
-				{
-					SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 640, 480, 0);			
-				}
-				SenseManager.Enable3DSeg();		
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.VideoSegmentation).Initialized = true;
-				_senseOptions.Find( i => i.ID == SenseOption.SenseOptionID.VideoSegmentation).Enabled = true;
+            }
+
+            if (IsSenseOptionSet(SenseOption.SenseOptionID.VideoSegmentation, true))
+            {
+                if (ColorImageQuality == MCTTypes.RGBQuality.FullHD)
+                {
+                    SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 1920, 1080, 0);
+                }
+                else if (ColorImageQuality == MCTTypes.RGBQuality.HD)
+                {
+                    SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 1280, 720, 0);
+                }
+                else if (ColorImageQuality == MCTTypes.RGBQuality.HalfHD)
+                {
+                    SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 960, 540, 0);
+                }
+                else
+                {
+                    SenseManager.EnableStream(PXCMCapture.StreamType.STREAM_TYPE_COLOR, 640, 480, 0);
+                }
+                SenseManager.Enable3DSeg();
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.VideoSegmentation).Initialized = true;
+                _senseOptions.Find(i => i.ID == SenseOption.SenseOptionID.VideoSegmentation).Enabled = true;
                 numberOfEnabledModalities++;
-            } 
+            }
 
             /* Initialize the execution */
-            _sts = SenseManager.Init();
+                _sts = SenseManager.Init();
             if (_sts < pxcmStatus.PXCM_STATUS_NO_ERROR)
             {
                 if (numberOfEnabledModalities > 0)
@@ -346,7 +346,8 @@ namespace RSUnityToolkit
                     Debug.LogError("Unable to initialize all modalities");
                 }
                 return;
-            } 
+            }
+
 			//Set different configurations:
 			
 			// Face 

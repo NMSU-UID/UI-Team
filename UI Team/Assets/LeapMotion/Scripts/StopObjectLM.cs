@@ -3,12 +3,14 @@ using System.Collections;
 
 public class StopObjectLM : MonoBehaviour {
 
+    GameObject cursor;
     GameObject handGes;
     bool objectDroppedOutside = false;
 
     // Use this for initialization
     void Start ()
     {
+        cursor = GameObject.Find("Cursor");
         handGes = GameObject.Find("myTextLeft");
     }
 	
@@ -29,6 +31,7 @@ public class StopObjectLM : MonoBehaviour {
         {
             TimeToMoveLM.MoveTheObj = false;
             SimpleTimer.timeCon = false;
+            cursor.GetComponent<FinishLMTask>().enabled = true;
         }
 	
 	}

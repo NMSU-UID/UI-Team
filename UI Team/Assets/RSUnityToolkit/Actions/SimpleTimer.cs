@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SimpleTimer : MonoBehaviour {
 
-    float targetTime = 0.00f;
+    public static float targetTime = 0.00f;
     public static bool timeCon = true;
     public GUIText theTimer;
     public GUIText theTime;

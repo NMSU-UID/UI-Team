@@ -33,7 +33,7 @@ public class StopCircleK : MonoBehaviour {
             MoveTriK.movingFlag = true;
             TimeToMoveCircleK.MoveTheObjK = false;
             checkMarkCircle.GetComponent<SpriteRenderer>().enabled = true;
-            Task3Timer.theCircle = true;
+            Task3TimerK.theCircle = true;
         }
 
     }

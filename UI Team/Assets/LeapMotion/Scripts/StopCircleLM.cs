@@ -35,7 +35,7 @@ public class StopCircleLM : MonoBehaviour
             MoveTriLM.movingFlag = true;
             TimeToMoveCircleLM.MoveTheObj = false;
             checkMarkCircle.GetComponent<SpriteRenderer>().enabled = true;
-            Task3Timer.theCircle = true;
+            Task3TimerLM.theCircle = true;
         }
 
     }

@@ -437,10 +437,11 @@ public class TrackingAction : VirtualWorldBoxAction {
 	static void AddThisAction () 
 	{
 		AddAction<TrackingAction>();
-	} 
-	
-	#endif
-	#endregion
-	
+	}
+
+#endif
+    #endregion
+
+
 }
  

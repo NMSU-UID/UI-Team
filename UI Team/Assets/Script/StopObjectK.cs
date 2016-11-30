@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class StopObjectK : MonoBehaviour {
-
     bool objectDroppedOutside = false;
-
-
+    GameObject cursor;
+    void Start()
+    {
+        cursor = GameObject.Find("Cursor");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +25,7 @@ public class StopObjectK : MonoBehaviour {
         {
             TimeToMoveK.MoveTheObjK = false;
             SimpleTimer.timeCon = false;
+            cursor.GetComponent<FinishKinectTask>().enabled = true;
         }
 
     }

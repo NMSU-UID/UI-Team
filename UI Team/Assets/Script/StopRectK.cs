@@ -33,7 +33,7 @@ public class StopRectK : MonoBehaviour {
             MoveTriK.movingFlag = true;
             TimeToMoveRectK.MoveTheObjK = false;
             checkMarkRect.GetComponent<SpriteRenderer>().enabled = true;
-            Task3Timer.theRect = true;
+            Task3TimerK.theRect = true;
         }
 
     }
